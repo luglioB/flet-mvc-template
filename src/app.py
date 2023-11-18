@@ -4,6 +4,7 @@ from flet import Page, app, Theme, ThemeMode, colors
 from models.User import User
 from controllers.UserController import UserController
 from views.View import View
+from views.Main import Main
 
 # def main(page: Page):
 #     page.title='Infostore'

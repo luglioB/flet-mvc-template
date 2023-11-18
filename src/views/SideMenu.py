@@ -1,19 +1,19 @@
 from flet import (UserControl, Container, IconButton, icons, NavigationRail, NavigationRailLabelType,
-                  NavigationRailDestination, Icon, padding, border_radius)
+                  NavigationRailDestination, Icon, padding, border_radius, colors)
 
-from View import View
+from .View import View
 
 class SideMenu(View):
-    ext = False
+    ext = True
     def __init__(self, route):
         super().__init__()
         self.route = route
         
         self.cont = Container(            
             padding=padding.all(5),
-            #bgcolor=colors.ON_INVERSE_SURFACE,                       
+            # bgcolor=colors.ON_INVERSE_SURFACE,                       
             border_radius=border_radius.all(5),
-            visible=False,
+            visible=True,
         )        
         self.nnrail = NavigationRail(
             extended=self.ext,
@@ -27,18 +27,18 @@ class SideMenu(View):
                 NavigationRailDestination(
                     icon=icons.COTTAGE_OUTLINED, selected_icon=icons.COTTAGE, label='Home',
                 ),
-                NavigationRailDestination(
-                    icon_content=Icon(icons.PERM_CONTACT_CALENDAR_OUTLINED), selected_icon_content=Icon(icons.PERM_CONTACT_CALENDAR), label='Customers'
-                ),
-                NavigationRailDestination(
-                    icon_content=Icon(icons.PERSON_OUTLINED), selected_icon_content=Icon(icons.PERSON_ROUNDED), label='Users'
-                ),
-                NavigationRailDestination(
-                    icon_content=Icon(icons.INVENTORY_2_OUTLINED), selected_icon_content=Icon(icons.INVENTORY), label='Products'
-                ),
-                NavigationRailDestination(
-                    icon_content=Icon(icons.SHOPPING_CART_OUTLINED), selected_icon_content=Icon(icons.SHOPPING_CART), label='Sales'
-                ),
+                # NavigationRailDestination(
+                #     icon_content=Icon(icons.PERM_CONTACT_CALENDAR_OUTLINED), selected_icon_content=Icon(icons.PERM_CONTACT_CALENDAR), label='Customers'
+                # ),
+                # NavigationRailDestination(
+                #     icon_content=Icon(icons.PERSON_OUTLINED), selected_icon_content=Icon(icons.PERSON_ROUNDED), label='Users'
+                # ),
+                # NavigationRailDestination(
+                #     icon_content=Icon(icons.INVENTORY_2_OUTLINED), selected_icon_content=Icon(icons.INVENTORY), label='Products'
+                # ),
+                # NavigationRailDestination(
+                #     icon_content=Icon(icons.SHOPPING_CART_OUTLINED), selected_icon_content=Icon(icons.SHOPPING_CART), label='Sales'
+                # ),
                 # NavigationRailDestination(
                 #     icon=icons.SETTINGS_OUTLINED, selected_icon_content=Icon(icons.SETTINGS), label='Configurações',
                 # ),
@@ -47,7 +47,7 @@ class SideMenu(View):
         )  
         self.cont.content=self.nnrail
 
-    def build(self):     
+    def build(self):
         return self.cont
 
     def menu_clicked(self, e):
@@ -58,12 +58,12 @@ class SideMenu(View):
     def nav_clicked(self, e):
         index = e.control.selected_index
         print(f"selected {index}")
-        # if e.control.selected_index == 0:            
-        #     self.page.go("/home")
-        #     self.route.bar.set_title('Home')
-        #     self.route.page.update()
-        #     self.update()
-        #     return
+        if e.control.selected_index == 0:            
+            self.page.go("/home")
+            # self.route.bar.set_title('Home')
+            self.route.page.update()
+            self.update()
+            return
         # elif e.control.selected_index == 1:
         #     self.page.go("/customers")
         #     self.route.bar.set_title('Customers')

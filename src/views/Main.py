@@ -1,9 +1,9 @@
 from flet import Page, Container, Row, VerticalDivider, FilePicker
 
 # from Appbar import Appbar
-# from SideMenu import SideMenu
-# from Login import Login
-from Home import Home
+from .SideMenu import SideMenu
+# from .Login import Login
+from .Home import Home
 # from Users import Users
 # from Customers import Customers
 # from RegisterCustomer import RegisterCustomer
@@ -42,7 +42,7 @@ class Main:
         # Creates dict of routes:
         self.routes = {
             "/": self.home,
-            # "/home": self.home,
+            "/home": self.home,
             # "/users": self.users,
             # "/customers": self.customers,
             # "/products": self.products
@@ -78,6 +78,6 @@ class Main:
         self.page.update()
 
         # Initialize the View
-        self.calls[e.route]()
+        # self.calls[e.route]()
         
         self.page.update()
